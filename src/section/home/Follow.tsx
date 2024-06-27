@@ -1,15 +1,23 @@
-import { TwitterTweetEmbed } from "react-twitter-embed";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-
+import TwitterEmbedLoad from "../../components/TwitterEmbedLoad";
+import follow from "../../assets/follow.svg";
 const Follow = () => {
   return (
     <>
       <div className=" py-6 px-3">
+        <div className="py-6">
+          <h1 className="text-2xl md:text-5xl text-white text-center">
+            FOLLOW @WienerDogAI
+          </h1>
+          <div className="hidden md:flex md:justify-end -mt-32">
+            <img src={follow} className="w-48 rotate-12" />
+          </div>
+        </div>
         <Swiper
           spaceBetween={50}
           centeredSlides={true}
@@ -41,44 +49,29 @@ const Follow = () => {
           className="mySwiper"
         >
           <SwiperSlide>
-            <div className="w-full">
-              <TwitterTweetEmbed tweetId={"1800560901088809124"} />
-            </div>
+            <TwitterEmbedLoad
+              tweetId={"1800560901088809124"}
+            ></TwitterEmbedLoad>
           </SwiperSlide>
           <SwiperSlide>
-            <div className="w-full">
-              <TwitterTweetEmbed tweetId={"1800560901088809124"} />
-            </div>
+            <TwitterEmbedLoad
+              tweetId={"1800560901088809124"}
+            ></TwitterEmbedLoad>
           </SwiperSlide>
           <SwiperSlide>
-            <div className="w-full">
-              <TwitterTweetEmbed tweetId={"1800560901088809124"} />
-            </div>
+            <TwitterEmbedLoad
+              tweetId={"1800560901088809124"}
+            ></TwitterEmbedLoad>
           </SwiperSlide>
           <SwiperSlide>
-            <div className="w-full">
-              <TwitterTweetEmbed tweetId={"1800560901088809124"} />
-            </div>
+            <TwitterEmbedLoad
+              tweetId={"1800560901088809124"}
+            ></TwitterEmbedLoad>
           </SwiperSlide>
           <SwiperSlide>
-            <div className="w-full">
-              <TwitterTweetEmbed tweetId={"1800560901088809124"} />
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="w-full">
-              <TwitterTweetEmbed tweetId={"1800560901088809124"} />
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="w-full">
-              <TwitterTweetEmbed tweetId={"1800560901088809124"} />
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="w-full">
-              <TwitterTweetEmbed tweetId={"1800560901088809124"} />
-            </div>
+            <TwitterEmbedLoad
+              tweetId={"1800560901088809124"}
+            ></TwitterEmbedLoad>
           </SwiperSlide>
         </Swiper>
       </div>
