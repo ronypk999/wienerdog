@@ -26,9 +26,7 @@ const Header = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-  useEffect(() => {
-    console.log(isSticky);
-  }, [isSticky]);
+
   return (
     <>
       <div
