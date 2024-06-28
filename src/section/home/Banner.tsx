@@ -29,7 +29,7 @@ const Banner = () => {
               <img src={sausage} className="max-w-40" />
             </div>
 
-            <div className="bg-linear text-white text-center space-y-3 p-3 rounded-box max-w-sm">
+            <div className="bg-linear mx-auto text-white text-center space-y-3 p-3 rounded-box max-w-sm">
               <p>Next Price Increase In</p>
               <Timer></Timer>
               <p> USDT Raised: $6,453,862.57 / $6,743,190</p>
