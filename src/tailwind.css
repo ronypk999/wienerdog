@@ -54,3 +54,7 @@ iframe {
 .swiper-pagination-bullet {
   background-color: white !important;
 }
+
+.nav {
+  transition: all 0.5s;
+}
