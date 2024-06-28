@@ -58,7 +58,7 @@ const Header = () => {
                   }, 500);
                 }
               }}
-              className="text-2xl"
+              className="text-3xl"
             >
               {hide2 ? <LuMenu /> : <MdOutlineRestaurantMenu />}
             </div>
