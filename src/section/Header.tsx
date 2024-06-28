@@ -8,7 +8,7 @@ const Header = () => {
   const [isSticky, setIsSticky] = useState(true);
   const [hide, setHide] = useState(true);
   const [hide2, setHide2] = useState(true);
-  const stickyElement = useRef(null);
+  const stickyElement = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const handleScroll = () => {
       if (stickyElement && stickyElement.current) {

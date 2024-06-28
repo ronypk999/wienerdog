@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { TwitterTweetEmbed } from "react-twitter-embed";
 import loader from "../assets/loader.svg";
-
-const TwitterEmbedLoad = ({ tweetId }) => {
+interface Props {
+  tweetId: string;
+}
+const TwitterEmbedLoad = ({ tweetId }: Props) => {
   const [loaded, setLoaded] = useState(false);
 
   return (
