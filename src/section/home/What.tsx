@@ -1,6 +1,8 @@
 import animatedLogo from "../../assets/logo.svg";
 import moon from "../../assets/moon.svg";
+import { useInfoContext } from "../../hook/ContextHook";
 const What = () => {
+  const { scrollToTarget } = useInfoContext();
   return (
     <>
       <div className="pt-16 px-3 overflow-hidden">
@@ -56,7 +58,10 @@ const What = () => {
               trading partner designed to give YOU the advantage you’ve been
               searching for
             </p>
-            <button className="btn hover:text-white text-[#6c42a8] bg-white px-6">
+            <button
+              onClick={scrollToTarget}
+              className="btn hover:text-white text-[#6c42a8] bg-white px-6"
+            >
               Buy $coin presale
             </button>
           </div>

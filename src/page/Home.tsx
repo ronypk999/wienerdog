@@ -14,7 +14,6 @@ const Home = () => {
   return (
     <>
       <div
-        className="max-w-[1600px] mx-auto"
         style={{
           backgroundImage: `url(${mainBg})`,
           backgroundRepeat: "no-repeat",

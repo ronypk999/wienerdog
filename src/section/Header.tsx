@@ -4,11 +4,13 @@ import { FaSquareXTwitter } from "react-icons/fa6";
 import { useEffect, useRef, useState } from "react";
 import { LuMenu } from "react-icons/lu";
 import { MdOutlineRestaurantMenu } from "react-icons/md";
+import { useInfoContext } from "../hook/ContextHook";
 const Header = () => {
   const [isSticky, setIsSticky] = useState(true);
   const [hide, setHide] = useState(true);
   const [hide2, setHide2] = useState(true);
   const stickyElement = useRef<HTMLDivElement>(null);
+  const { scrollToTarget } = useInfoContext();
   useEffect(() => {
     const handleScroll = () => {
       if (stickyElement && stickyElement.current) {
@@ -31,11 +33,25 @@ const Header = () => {
     };
   }, []);
 
+  const menuHandle = () => {
+    if (hide) {
+      setHide2(!hide);
+      setTimeout(() => {
+        setHide(!hide);
+      }, 100);
+    } else {
+      setHide(!hide);
+      setTimeout(() => {
+        setHide2(!hide);
+      }, 500);
+    }
+  };
+
   return (
     <>
       <div
         ref={stickyElement}
-        className={`sticky top-0 mb-[-100px] flex items-center gap-12 ${
+        className={`max-w-[1600px] mx-auto sticky top-0 mb-[-100px] flex items-center gap-12 ${
           isSticky ? "bg-transparent" : "bg-black"
         } z-10`}
       >
@@ -44,22 +60,7 @@ const Header = () => {
             <img src={logo} />
           </div>
           <div className="md:hidden">
-            <div
-              onClick={() => {
-                if (hide) {
-                  setHide2(!hide);
-                  setTimeout(() => {
-                    setHide(!hide);
-                  }, 100);
-                } else {
-                  setHide(!hide);
-                  setTimeout(() => {
-                    setHide2(!hide);
-                  }, 500);
-                }
-              }}
-              className="text-3xl"
-            >
+            <div onClick={menuHandle} className="text-3xl">
               {hide2 ? <LuMenu /> : <MdOutlineRestaurantMenu />}
             </div>
           </div>
@@ -67,7 +68,7 @@ const Header = () => {
         <div
           className={`${hide ? "-right-[100rem]" : "right-0"} ${
             hide2 && "hidden"
-          } absolute h-screen nav bg-black md:bg-transparent md:h-fit p-3 space-y-12 md:space-y-0 md:p-0 top-24 bottom-0 md:static md:flex items-center w-full justify-around`}
+          } absolute h-screen nav bg-black md:bg-transparent md:h-fit p-3 space-y-12 md:space-y-0 md:p-0 top-24 bottom-0 md:static md:flex items-center w-full justify-around lg:justify-between lg:px-6`}
           onClick={(e) => {
             e.stopPropagation();
           }}
@@ -82,7 +83,23 @@ const Header = () => {
               <FaSquareXTwitter />
               <FaTelegram />
             </div>
-            <button className="btn bg-theme-1 text-base px-6">Buy Now</button>
+            <button
+              onClick={() => {
+                scrollToTarget();
+                menuHandle();
+              }}
+              className="md:hidden btn bg-theme-1 text-base px-6"
+            >
+              Buy Now
+            </button>
+            <button
+              onClick={() => {
+                scrollToTarget();
+              }}
+              className="hidden md:block btn bg-theme-1 text-base px-6"
+            >
+              Buy Now
+            </button>
           </div>
         </div>
       </div>

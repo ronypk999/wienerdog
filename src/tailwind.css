@@ -6,6 +6,11 @@
 .btn {
   @apply rounded-full;
 }
+.btn:hover {
+  background-color: #000;
+  color: #fff;
+  border: 2px solid #fff;
+}
 .bg-theme-1 {
   background-color: #ba8bf9;
   @apply text-white;
@@ -57,4 +62,7 @@ iframe {
 
 .nav {
   transition: all 0.5s;
+}
+.Toastify__toast-container--top-right {
+  top: 5.5rem !important;
 }

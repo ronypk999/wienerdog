@@ -19,7 +19,7 @@ const Featured = () => {
       <div className="py-6">
         <h4 className="text-white text-center">Featured In</h4>
       </div>
-      <div className="px-12 pb-12 hidden md:flex justify-around gap-6">
+      <div className="max-w-[1700px] mx-auto px-12 pb-12 hidden md:flex justify-around gap-6">
         <div className="w-64 mx-auto">
           <img src={bitcoin} className="w-full" />
         </div>

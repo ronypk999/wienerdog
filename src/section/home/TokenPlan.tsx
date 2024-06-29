@@ -3,7 +3,7 @@ import loader from "../../assets/loader.svg";
 const TokenPlan = () => {
   return (
     <>
-      <div className="relative text-white py-12 px-3 space-y-6">
+      <div className="max-w-[1600px] mx-auto relative text-white py-12 px-3 space-y-6">
         <div className="lg:absolute mx-auto text-base md:text-xl top-48 left-12 space-y-6 bg-[rgba(0,0,0,.2)] p-6 rounded-box w-full md:w-[30rem]">
           <h1 className="text-2xl md:text-5xl">Tokenomics</h1>
           <div className="space-y-2">

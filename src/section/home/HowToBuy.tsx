@@ -13,7 +13,7 @@ const HowToBuy = () => {
         <h1 className="text-2xl md:text-5xl text-white  text-center">
           How To Buy $WAI
         </h1>
-        <div className="text-white text-center flex flex-col md:flex-row gap-4">
+        <div className="max-w-[1600px] mx-auto text-white text-center flex flex-col md:flex-row gap-4">
           <div className="p-3 space-y-3 bg-[rgba(255,255,255,.2)] rounded-box">
             <div className="bg-theme-1 mx-auto rounded-full w-12 py-3 text-xl">
               01

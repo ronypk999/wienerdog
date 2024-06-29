@@ -9,7 +9,7 @@ import follow from "../../assets/follow.svg";
 const Follow = () => {
   return (
     <>
-      <div className=" py-6 px-3">
+      <div className="max-w-[1600px] mx-auto py-6 px-3">
         <div className="py-6">
           <h1 className="text-2xl md:text-5xl text-white text-center">
             FOLLOW @WienerDogAI

@@ -12,7 +12,7 @@ import { Autoplay, Pagination, Navigation } from "swiper/modules";
 const Youtube = () => {
   return (
     <>
-      <div className="p-12 hidden md:flex justify-around gap-6">
+      <div className="max-w-[1500px] mx-auto p-12 hidden md:flex justify-around gap-6">
         <div className="w-64">
           <ReactPlayer
             width="100%"

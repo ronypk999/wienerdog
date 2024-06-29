@@ -18,7 +18,6 @@ const TwitterEmbedLoad = ({ tweetId }: Props) => {
         <Tweet
           tweetId={tweetId}
           onLoad={() => {
-            console.log("loaded");
             setLoaded(true);
           }}
         />
