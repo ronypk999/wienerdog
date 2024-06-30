@@ -28,14 +28,37 @@ const ChangeLangBtn = () => {
     setIsOpen(false);
   };
 
+  const lang = (lang: string) => {
+    if (lang === "en-US") {
+      return true;
+    }
+    if (lang === "bn") {
+      return true;
+    }
+
+    return false;
+  };
+
   return (
     <div className="relative" ref={dropdownRef}>
       <button
         className="btn hover:bg-transparent hover:border-0 border-0 btn-ghost uppercase"
         onClick={() => setIsOpen(!isOpen)}
       >
-        <img src={`/lang/${i18n.language}/flag.png`} className="rounded-full" />{" "}
-        {i18n.language}
+        {lang(i18n.language) ? (
+          <>
+            <img
+              src={`/lang/${i18n.language}/flag.png`}
+              className="rounded-full"
+            />
+            {i18n.language}
+          </>
+        ) : (
+          <>
+            <img src={`/lang/en-US/flag.png`} className="rounded-full" />
+            {t("en_US")}
+          </>
+        )}
       </button>
       {isOpen && (
         <div className="absolute md:right-1 top-16">

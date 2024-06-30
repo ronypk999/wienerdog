@@ -96,5 +96,14 @@
   "widget_error_type_amount": "দয়া করে পরিমাণ টাইপ করুন",
   "widget_error_amount": "অবৈধ পরিমাণ",
   "widget_min_buy": "ন্যূনতম ক্রয়",
-  "widget_error_balance": "যথাযথ হিসাব নেই"
+  "widget_error_balance": "যথাযথ হিসাব নেই",
+  "success_modal_headline": "অভিনন্দন!",
+  "success_modal_subline": "আপনি $COIN এর অংশ হয়েছেন!",
+  "success_modal_paid": "আপনি প্রদান করেছেন:",
+  "success_modal_receive": "আপনি পেয়েছেন:",
+  "success_modal_coin_address": "$COIN ঠিকানা:",
+  "success_modal_instruction": "আপনার $COIN ব্যালেন্স দেখতে আমাদের আবার দেখুন ও আপনার ওয়ালেট সংযুক্ত করুন!",
+  "success_modal_welcome": "COIN প্রকল্পে অবদান রাখার জন্য আপনাকে ধন্যবাদ",
+  "success_modal_explorer_btn_txt": "এক্সপ্লোরারে লেনদেন খুলুন",
+  "success_modal_close_btn_text": "ঠিক আছে"
 }

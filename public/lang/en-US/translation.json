@@ -96,5 +96,14 @@
   "widget_error_type_amount": "Please type amount",
   "widget_error_amount": "Invalid amount",
   "widget_min_buy": "Minimum buy",
-  "widget_error_balance": "Not enough balance"
+  "widget_error_balance": "Not enough balance",
+  "success_modal_headline": "Congratulations!",
+  "success_modal_subline": "You have became a part of $COIN!",
+  "success_modal_paid": "You paid:",
+  "success_modal_receive": "You receive:",
+  "success_modal_coin_address": "$COIN Address:",
+  "success_modal_instruction": "To view your $COIN balance just visit us again & Connect your wallet!",
+  "success_modal_welcome": "Thank you for contributing in COIN project",
+  "success_modal_explorer_btn_txt": "Open Transaction in Explorer",
+  "success_modal_close_btn_text": "OK"
 }

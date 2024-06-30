@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+
 interface Purchase {
   amountInDXE: string | number;
   amountInBNB: string | number;
@@ -18,6 +20,7 @@ interface PropTypes {
 
 const Success = ({ openModal, setOpenModal, purchase }: PropTypes) => {
   const { amountInDXE, amountInBNB, hash, address, dxeicon, coin } = purchase;
+  const { t } = useTranslation();
   return (
     <div>
       <div
@@ -48,31 +51,36 @@ const Success = ({ openModal, setOpenModal, purchase }: PropTypes) => {
               ></path>
             </g>
           </svg>
-          <h1 className="mb-2 text-3xl font-bold">Congratulations!</h1>
+          <h1 className="mb-2 text-3xl font-bold">
+            {t("success_modal_headline")}
+          </h1>
           <h1 className="text-xl font-semibold mb-2">
-            You have became a part of $COIN!
+            {t("success_modal_subline")}
           </h1>
 
           <div className="flex justify-center gap-3 opacity-80 pt-3">
             <div className="flex">
-              <p className="">You paid: {amountInBNB}</p>
+              <p className="">
+                {t("success_modal_paid")} {amountInBNB}
+              </p>
               <img src={coin.icon} className="w-5 h-5" />
             </div>
             <div className="flex">
-              <p className="">You receive: {amountInDXE}</p>
+              <p className="">
+                {t("success_modal_receive")} {amountInDXE}
+              </p>
               <img src={dxeicon} className="w-6 h-6" />
             </div>
           </div>
           <div className="flex flex-col pt-6 opacity-80">
-            <p className="text-left">$COIN Address:</p>
+            <p className="text-left">{t("success_modal_coin_address")}</p>
             <p className="text-left"> {address.substring(2)}</p>
           </div>
           <h1 className="mb-4 mt-2 font-semibold">
-            To view your $COIN balance just visit us again & Connect your
-            wallet!
+            {t("success_modal_instruction")}
           </h1>
           <h1 className="mb-2 text-xs font-semibold">
-            Thank you for contributing in COIN project
+            {t("success_modal_welcome")}
           </h1>
           <div className="pt-6 space-y-6">
             <div>
@@ -81,7 +89,7 @@ const Success = ({ openModal, setOpenModal, purchase }: PropTypes) => {
                 href={`${coin.scanUrl}${hash.substring(2)}`}
                 target="_blank"
               >
-                Open Transaction in Explorer
+                {t("success_modal_explorer_btn_txt")}
               </a>
             </div>
             <div>
@@ -89,7 +97,7 @@ const Success = ({ openModal, setOpenModal, purchase }: PropTypes) => {
                 onClick={() => setOpenModal(false)}
                 className="btn btn-success btn-sm"
               >
-                OK
+                {t("success_modal_close_btn_text")}
               </button>
             </div>
           </div>
