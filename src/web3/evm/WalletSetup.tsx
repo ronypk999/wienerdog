@@ -6,7 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { WalletConnect } from "./WalletConnect";
 
 const queryClient = new QueryClient();
-const projectId = "09412ca882921e14c0d6e881f47855f7";
+const projectId = "0bdf4e02a318033ac42dd72db0c4c5f4";
 
 const metadata = {
   name: import.meta.env.VITE_NAME,

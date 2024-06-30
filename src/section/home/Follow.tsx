@@ -6,13 +6,15 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import TwitterEmbedLoad from "../../components/TwitterEmbedLoad";
 import follow from "../../assets/follow.svg";
+import { useTranslation } from "react-i18next";
 const Follow = () => {
+  const { t } = useTranslation();
   return (
     <>
       <div className="max-w-[1600px] mx-auto py-6 px-3">
         <div className="py-6">
           <h1 className="text-2xl md:text-5xl text-white text-center">
-            FOLLOW @WienerDogAI
+            {t("follow")} @WienerDogAI
           </h1>
           <div className="hidden md:flex md:justify-end -mt-32">
             <img src={follow} className="w-48 rotate-12" />

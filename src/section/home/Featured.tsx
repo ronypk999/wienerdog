@@ -13,11 +13,13 @@ import "swiper/css/navigation";
 
 // import required modules
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import { useTranslation } from "react-i18next";
 const Featured = () => {
+  const { t } = useTranslation();
   return (
     <>
       <div className="py-6">
-        <h4 className="text-white text-center">Featured In</h4>
+        <h4 className="text-white text-center">{t("featured_title")}</h4>
       </div>
       <div className="max-w-[1700px] mx-auto px-12 pb-12 hidden md:flex justify-around gap-6">
         <div className="w-64 mx-auto">

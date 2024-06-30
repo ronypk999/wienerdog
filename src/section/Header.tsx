@@ -5,12 +5,16 @@ import { useEffect, useRef, useState } from "react";
 import { LuMenu } from "react-icons/lu";
 import { MdOutlineRestaurantMenu } from "react-icons/md";
 import { useInfoContext } from "../hook/ContextHook";
+import ChangeLangBtn from "../components/ChangeLangBtn";
+import { useTranslation } from "react-i18next";
 const Header = () => {
   const [isSticky, setIsSticky] = useState(true);
   const [hide, setHide] = useState(true);
   const [hide2, setHide2] = useState(true);
+  const { t } = useTranslation();
   const stickyElement = useRef<HTMLDivElement>(null);
-  const { scrollToTarget } = useInfoContext();
+  const { scrollToTarget, scrollToFaq, scrollToHow, scrollToWhat } =
+    useInfoContext();
   useEffect(() => {
     const handleScroll = () => {
       if (stickyElement && stickyElement.current) {
@@ -73,10 +77,10 @@ const Header = () => {
             e.stopPropagation();
           }}
         >
-          <div className="flex flex-col md:flex-row text-white text-2xl gap-6">
-            <a href="#">What is this?</a>
-            <a href="#">How to buy?</a>
-            <a href="#">Faq</a>
+          <div className="flex flex-col md:flex-row text-white items-start text-2xl gap-6">
+            <button onClick={scrollToWhat}>{t("nav_1")}</button>
+            <button onClick={scrollToHow}>{t("nav_2")}</button>
+            <button onClick={scrollToFaq}>{t("nav_3")}</button>
           </div>
           <div className="flex flex-col md:flex-row gap-3 text-white">
             <div className="flex gap-2 text-5xl">
@@ -90,7 +94,7 @@ const Header = () => {
               }}
               className="md:hidden btn bg-theme-1 text-base px-6"
             >
-              Buy Now
+              {t("nav_buy_btn")}
             </button>
             <button
               onClick={() => {
@@ -98,8 +102,9 @@ const Header = () => {
               }}
               className="hidden md:block btn bg-theme-1 text-base px-6"
             >
-              Buy Now
+              {t("nav_buy_btn")}
             </button>
+            <ChangeLangBtn></ChangeLangBtn>
           </div>
         </div>
       </div>

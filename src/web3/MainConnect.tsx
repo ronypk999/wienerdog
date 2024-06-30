@@ -5,6 +5,7 @@ import eth from "../assets/ethereum.png";
 import Timer from "../components/Timer";
 import { ToastContainer } from "react-toastify";
 import { useInfoContext } from "../hook/ContextHook";
+import { useTranslation } from "react-i18next";
 
 const MainConnect = () => {
   const {
@@ -22,6 +23,7 @@ const MainConnect = () => {
     sendCoinRef,
     widget,
   } = useInfoContext();
+  const { t } = useTranslation();
 
   const handleSelectCoin = (selectedName: string) => {
     const coin = coins.find(({ name }) => name === selectedName);
@@ -71,14 +73,12 @@ const MainConnect = () => {
         ref={widget}
         className="bg-linear z-10 mx-auto text-white text-center space-y-3 p-3 rounded-box max-w-sm"
       >
-        <p>Next Price Increase In</p>
+        <p>{t("widget_title")}</p>
         <Timer></Timer>
         <p>
           {" "}
-          USD Raised:{" "}
-          {collectedDXE &&
-            usdPrice &&
-            formatUSD(collectedDXE * usdPrice)} /{" "}
+          {t("widget_raised")}{" "}
+          {collectedDXE && usdPrice && formatUSD(collectedDXE * usdPrice)} /{" "}
           {targetDXE && usdPrice && formatUSD(targetDXE * usdPrice)}
         </p>
         <div className="relative">
@@ -88,11 +88,13 @@ const MainConnect = () => {
             max={targetDXE}
           ></progress>
           <p className="absolute top-0 left-[50%] translate-x-[-50%] text-white">
-            Until price increase
+            {t("widget_progress_text")}
           </p>
         </div>
 
-        <p>Your purchased $WAI = {myPurchase && myPurchase | 0}</p>
+        <p>
+          {t("widget_purchase_text")} {myPurchase && myPurchase | 0}
+        </p>
         <div className="flex justify-around items-center">
           <div className="w-full flex-1">
             <hr />
@@ -126,7 +128,9 @@ const MainConnect = () => {
         </div>
         <div className="flex text-left justify-between text-white">
           <div>
-            <p className="text-xs ">{selectedCoin?.name} you pay</p>
+            <p className="text-xs ">
+              {selectedCoin?.name} {t("widget_pay")}
+            </p>
             <label className="input bg-transparent border-2 border-white rounded-box flex items-center gap-2">
               <input
                 type="text"
@@ -139,7 +143,7 @@ const MainConnect = () => {
             </label>
           </div>
           <div className="space-x-3">
-            <p className="text-xs pl-3">$COIN you receive</p>
+            <p className="text-xs pl-3">$COIN {t("widget_receive")}</p>
             <label className="input bg-transparent border-2 border-white rounded-box flex items-center gap-2">
               <input
                 type="text"

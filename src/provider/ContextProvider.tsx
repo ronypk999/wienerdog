@@ -6,6 +6,7 @@ import bnbImage from "../assets/bnb.png";
 import maticImage from "../assets/matic.png";
 import avaxImage from "../assets/avalanche.png";
 import { Web3ModalProvider } from "../web3/evm/WalletSetup";
+import { useTranslation } from "react-i18next";
 interface coinx {
   bnbPrice?: number;
   ethPrice?: number;
@@ -49,16 +50,26 @@ export interface ContextValue extends PurchaseData {
   addressStore: (address?: string | null) => string[] | null;
   amountValidate: (balance: number) => string | false;
   sendCoinRef: React.MutableRefObject<HTMLInputElement | null>;
+  faqRef: React.MutableRefObject<HTMLInputElement | null>;
   widget: React.MutableRefObject<HTMLInputElement | null>;
+  howToBuyRef: React.MutableRefObject<HTMLInputElement | null>;
+  WhatisRef: React.MutableRefObject<HTMLInputElement | null>;
   scrollToTarget: () => void;
+  scrollToFaq: () => void;
+  scrollToWhat: () => void;
+  scrollToHow: () => void;
 }
 
 export const InfoContext = createContext<ContextValue | undefined>(undefined);
 
 const ContextProvider = ({ children }: ContextProps) => {
+  const { t } = useTranslation();
   const { data: datax } = useLoaderData() as PurchaseData; // Ensure type of loader data
   const [data, setData] = useState<coinx>(datax || {});
   const sendCoinRef = useRef<HTMLInputElement>(null);
+  const faqRef = useRef<HTMLInputElement>(null);
+  const howToBuyRef = useRef<HTMLInputElement>(null);
+  const WhatisRef = useRef<HTMLInputElement>(null);
   const widget = useRef<HTMLInputElement>(null);
   const addressStore = (address: string | null = null): string[] | null => {
     if (address) {
@@ -80,7 +91,6 @@ const ContextProvider = ({ children }: ContextProps) => {
       })
       .then((response) => {
         setData(response.data);
-        console.log(response.data);
       })
       .catch((error) => console.error("Error updating data:", error));
   };
@@ -130,25 +140,25 @@ const ContextProvider = ({ children }: ContextProps) => {
 
   const amountValidate = (balance: number): string | false => {
     if (isNaN(amountSender)) {
-      return "Only Number is allowed";
+      return t("widget_error_number");
     }
 
     if (amountSender === 0) {
-      return "Please type amount";
+      return t("widget_error_type_amount");
     }
 
     if (amountSender < 0) {
-      return "Invalid amount";
+      return t("widget_error_amount");
     }
 
     if (selectedCoin.name === "MATIC" && amountSender < 1) {
-      return `Minimum buy 1 ${selectedCoin.name}`;
+      return `${t("widget_min_buy")} 1 ${selectedCoin.name}`;
     } else if (amountSender < 0.001) {
-      return `Minimum buy 0.001 ${selectedCoin.name}`;
+      return `${t("widget_min_buy")} 0.001 ${selectedCoin.name}`;
     }
 
     if (amountSender > balance) {
-      return "Not enough balance";
+      return t("widget_error_balance");
     }
 
     return false; // Explicitly return false if no validation errors
@@ -157,6 +167,21 @@ const ContextProvider = ({ children }: ContextProps) => {
   const scrollToTarget = () => {
     if (widget.current) {
       widget.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+  const scrollToFaq = () => {
+    if (faqRef.current) {
+      faqRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+  const scrollToWhat = () => {
+    if (WhatisRef.current) {
+      WhatisRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+  const scrollToHow = () => {
+    if (howToBuyRef.current) {
+      howToBuyRef.current.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -173,7 +198,13 @@ const ContextProvider = ({ children }: ContextProps) => {
     setAmount,
     addressStore,
     widget,
+    scrollToFaq,
     sendCoinRef,
+    faqRef,
+    WhatisRef,
+    howToBuyRef,
+    scrollToWhat,
+    scrollToHow,
     scrollToTarget,
     amountValidate,
   };

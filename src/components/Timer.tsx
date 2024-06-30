@@ -1,7 +1,9 @@
 import { useTimer } from "react-timer-hook";
 import { useInfoContext } from "../hook/ContextHook";
+import { useTranslation } from "react-i18next";
 
 export default function Timer() {
+  const { t } = useTranslation();
   const { presaleEndTime } = useInfoContext();
   let expiryTimestamp;
 
@@ -20,19 +22,19 @@ export default function Timer() {
   return (
     <div className="flex justify-around bg-[#966CF2] p-3 rounded-box">
       <div className="flex flex-col">
-        <span>Days</span>
+        <span>{t("days")}</span>
         <span className="text-3xl">{days}</span>
       </div>
       <div className="flex flex-col">
-        <span>Hours</span>
+        <span>{t("hours")}</span>
         <span className="text-3xl">{hours}</span>
       </div>
       <div className="flex flex-col">
-        <span>Minutes</span>
+        <span>{t("minutes")}</span>
         <span className="text-3xl">{minutes}</span>
       </div>
       <div className="flex flex-col">
-        <span>Seconds</span>
+        <span>{t("seconds")}</span>
         <span className="text-3xl">{seconds}</span>
       </div>
     </div>

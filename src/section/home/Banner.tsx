@@ -3,7 +3,9 @@ import sausage from "../../assets/sausage.png";
 import bannerBg from "../../assets/hero.gif";
 import dog from "../../assets/dog.svg";
 import MainConnect from "../../web3/MainConnect";
+import { useTranslation } from "react-i18next";
 const Banner = () => {
+  const { t } = useTranslation();
   return (
     <>
       <div
@@ -18,11 +20,10 @@ const Banner = () => {
         <div className="hero-content flex flex-col justify-around ">
           <div className="flex justify-around flex-col md:flex-row gap-12">
             <div className="space-y-6 flex-1 ">
-              <h1 className="text-5xl text-white max-w-4xl leading-tight">
-                WienerAI
-                <br /> Part Dog, Part Sausage, Part <br />
-                AI Trading Bot
-              </h1>
+              <h1
+                dangerouslySetInnerHTML={{ __html: t("headline") }}
+                className="text-5xl text-white max-w-4xl leading-tight"
+              ></h1>
               <img src={sausage} className="max-w-40" />
             </div>
             <MainConnect></MainConnect>

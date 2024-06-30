@@ -17,8 +17,10 @@ import Success from "../../components/modal/Success";
 
 import { useWeb3Modal } from "@web3modal/wagmi/react";
 import { useInfoContext } from "../../hook/ContextHook";
+import { useTranslation } from "react-i18next";
 
 export const WalletConnect = () => {
+  const { t } = useTranslation();
   const {
     updateData,
     addressStore,
@@ -28,7 +30,9 @@ export const WalletConnect = () => {
     amountValidate,
   } = useInfoContext();
 
-  const [buyBtnTxt, setBuyBtnTxt] = useState(`Buy with ${selectedCoin.name}`);
+  const [buyBtnTxt, setBuyBtnTxt] = useState(
+    `${t("widget_buy")} ${selectedCoin.name}`
+  );
   const { open } = useWeb3Modal();
   const { disconnect } = useDisconnect();
   const { isConnected, address } = useAccount();
@@ -59,7 +63,7 @@ export const WalletConnect = () => {
 
   useEffect(() => {
     if (SwitchChainErrorType) {
-      toast.error("Transaction Cancelled", {
+      toast.error(t("widget_cancelled"), {
         theme: "dark",
       });
     }
@@ -78,7 +82,7 @@ export const WalletConnect = () => {
       setBuyBtnTxt("Processing");
 
       sendTransaction({
-        to: `0x${selectedCoin.receiver}`,
+        to: `0x${selectedCoin.receiver.substring(2)}`,
         value: parseEther(amountSender.toString()),
         data: "0x",
       });
@@ -119,8 +123,8 @@ export const WalletConnect = () => {
 
   useEffect(() => {
     if (SendTransactionErrorType) {
-      setBuyBtnTxt(`Buy with ${selectedCoin.name}`);
-      toast.error("Transaction failed", {
+      setBuyBtnTxt(`${t("widget_buy")} ${selectedCoin.name}`);
+      toast.error(t("widget_failed"), {
         theme: "dark",
       });
     }
@@ -128,7 +132,7 @@ export const WalletConnect = () => {
 
   useEffect(() => {
     if (SendTransactionData) {
-      setBuyBtnTxt("successfull");
+      setBuyBtnTxt(t("widget_success"));
       setOpenModal(true);
       const apiObj = JSON.stringify({
         coinAmount: amountSender,
@@ -144,11 +148,11 @@ export const WalletConnect = () => {
       axios
         .post(`${import.meta.env.VITE_API_URL}/api.php`, apiObj)
         .then(() => {
-          setBuyBtnTxt(`Buy More With ${selectedCoin.name}`);
+          setBuyBtnTxt(`${t("widget_buy_more")} ${selectedCoin.name}`);
           updateData();
         })
         .catch(() => {
-          setBuyBtnTxt(`Buy with ${selectedCoin.name}`);
+          setBuyBtnTxt(`${t("widget_buy")} ${selectedCoin.name}`);
         });
     }
   }, [SendTransactionData]);
@@ -187,7 +191,7 @@ export const WalletConnect = () => {
               }}
               className="btn bg-theme-1 text-base px-6"
             >
-              Disconnect
+              {t("widget_disconnect")}
             </button>
           </div>
         ) : (
@@ -197,7 +201,7 @@ export const WalletConnect = () => {
             }}
             className="btn bg-theme-1 text-base px-6"
           >
-            Connect Wallet
+            {t("widget_connect")}
           </button>
         )}
       </div>
