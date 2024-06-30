@@ -39,11 +39,13 @@ const Header = () => {
 
   const menuHandle = () => {
     if (hide) {
+      document.body.style.overflow = "hidden";
       setHide2(!hide);
       setTimeout(() => {
         setHide(!hide);
       }, 100);
     } else {
+      document.body.style.overflow = "";
       setHide(!hide);
       setTimeout(() => {
         setHide2(!hide);
@@ -77,10 +79,36 @@ const Header = () => {
             e.stopPropagation();
           }}
         >
-          <div className="flex flex-col md:flex-row text-white items-start text-2xl gap-6">
+          <div className="hidden md:flex flex-col md:flex-row text-white items-start text-2xl gap-6">
             <button onClick={scrollToWhat}>{t("nav_1")}</button>
             <button onClick={scrollToHow}>{t("nav_2")}</button>
             <button onClick={scrollToFaq}>{t("nav_3")}</button>
+          </div>
+          <div className="md:hidden flex flex-col md:flex-row text-white items-start text-2xl gap-6">
+            <button
+              onClick={() => {
+                scrollToWhat();
+                menuHandle();
+              }}
+            >
+              {t("nav_1")}
+            </button>
+            <button
+              onClick={() => {
+                scrollToHow();
+                menuHandle();
+              }}
+            >
+              {t("nav_2")}
+            </button>
+            <button
+              onClick={() => {
+                scrollToFaq();
+                menuHandle();
+              }}
+            >
+              {t("nav_3")}
+            </button>
           </div>
           <div className="flex flex-col md:flex-row gap-3 text-white">
             <div className="flex gap-2 text-5xl">

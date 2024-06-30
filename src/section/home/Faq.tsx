@@ -45,9 +45,7 @@ const Faq = () => {
             </div>
             <div className="collapse-content border-t-2">
               <div className="p-3">
-                <p>
-                  <p>{t("faq2_info")}</p>
-                </p>
+                <p>{t("faq2_info")}</p>
               </div>
             </div>
           </div>

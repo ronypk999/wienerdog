@@ -12,7 +12,7 @@ const metadata = {
   name: import.meta.env.VITE_NAME,
   description: import.meta.env.VITE_SHORT_INFO,
   url: import.meta.env.VITE_API_URL, // origin must match your domain & subdomain
-  icons: [`${import.meta.env.VITE_API_URL}/dexicon.png`],
+  icons: [`${import.meta.env.VITE_API_URL}/vite.svg`],
 };
 
 const chains: readonly [Chain, ...Chain[]] = [bsc, mainnet, polygon, avalanche];
